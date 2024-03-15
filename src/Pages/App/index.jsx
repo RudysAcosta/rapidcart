@@ -5,6 +5,7 @@ import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
 import Signin from '../Signin'
+import Navbar from '../../Components/Navbar'
 import './App.css'
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/signin" element={<Signin/>} />
         <Route path="/*" element={<NotFound/>} />
       </Routes>
+      <Navbar />
    </BrowserRouter>
   )
 }
