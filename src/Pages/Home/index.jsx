@@ -1,10 +1,12 @@
+import Layout from "../../Components/Layout"
+
 function Home() {
     return (
-        <div className="">
-            <h1>
-                Hola home
-            </h1>
-        </div>
+        <Layout>
+           
+             home
+           
+        </Layout>
     )
 }
 
