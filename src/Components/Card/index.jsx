@@ -10,6 +10,11 @@ const Card = (data) => {
       context.openProductDetail()
     }
 
+    const addToCart = (product) => {
+      context.setCount(context.count + 1)
+      context.setCartProducts([...context.cartProducts, product])
+    }
+
     return (
         <div
           onClick={() => showProduct(data.data)} 
@@ -19,8 +24,9 @@ const Card = (data) => {
             <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt='headphones' />
             <div 
               className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-              onClick={() => context.setCount(context.count + 1)}>
-              <PlusIcon className='h-4 w-4' />
+              onClick={() => addToCart(data.data) }>
+              <PlusIcon 
+                className='h-4 w-4'/>
             </div>
           </figure>
           <p className='flex justify-between'>
