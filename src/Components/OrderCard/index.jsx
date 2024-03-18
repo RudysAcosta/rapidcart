@@ -10,7 +10,7 @@ const OrderCard = props => {
      * @param {string} props.imageUrl - The URL of the image for the order.
      * @param {number} props.quantity - The quantity of the order.
      */
-    const { title, price, imageUrl, quantity } = props;
+    const {id, title, price, imageUrl, handleDelete, quantity } = props;
 
     
     return (
@@ -23,7 +23,9 @@ const OrderCard = props => {
             </div>
             <div className="flex items-center gap-2">
                 <p className="text-lg font-medium">{ price }</p>
-                <XMarkIcon className="h-6 w-6 cursor-pointer" />
+                <XMarkIcon 
+                    className="h-6 w-6 cursor-pointer"
+                    onClick={() => handleDelete(id)} />
             </div>
         </div>
     )
