@@ -14,7 +14,7 @@ const Card = (data) => {
     const addToCart = (event, product) => {
       event.stopPropagation()
       context.setCount(context.count + 1)
-      context.setCartProducts([...context.cartProducts, product])
+      context.setCartProducts([...context.cartProducts, {...product, quantity: 1}])
       context.openCheckoutSideMenu()
       context.closeProductDetail()
     }

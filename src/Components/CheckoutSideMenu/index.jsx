@@ -2,6 +2,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../OrderCard'
+import { totalPrice } from '../../utils'
 import './style.css'
 
 const CheckoutSideMenu = () => {
@@ -9,6 +10,18 @@ const CheckoutSideMenu = () => {
     
     const handleDelete = (id) => {
         const newCartProducts = context.cartProducts.filter(product => product.id !== id)
+        context.setCount(context.count - 1)
+        context.setCartProducts(newCartProducts)
+    }
+
+    const handleChange = (id, value) => {
+        const newCartProducts = context.cartProducts.map(product => {
+            if (product.id === id) {
+                return {...product, quantity: value}
+            } else {
+                return product
+            }
+        })
         context.setCartProducts(newCartProducts)
     }
 
@@ -29,14 +42,18 @@ const CheckoutSideMenu = () => {
                     <OrderCard
                         id={product.id}  
                         handleDelete={ handleDelete}
+                        handleChange={handleChange}
                         key={product.id}
                         title={product.title} 
                         price={product.price} 
                         imageUrl={product.image}
-                        quantity={1} />
+                        quantity={product.quantity} />
                 ))
             }
 
+            </div>
+            <div>
+                Total: ${totalPrice(context.cartProducts)}
             </div>
             
         </aside>

@@ -1,4 +1,4 @@
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import {  TrashIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/solid";
 
 const OrderCard = props => {
     /**
@@ -10,22 +10,40 @@ const OrderCard = props => {
      * @param {string} props.imageUrl - The URL of the image for the order.
      * @param {number} props.quantity - The quantity of the order.
      */
-    const {id, title, price, imageUrl, handleDelete, quantity } = props;
+    const {id, title, price, imageUrl, handleDelete, quantity, handleChange } = props;
 
-    
     return (
-        <div className="flex justify-between items-center mb-3">
-            <div className="flex items-center gap-2">
+        <div className="flex justify-between items-center my-2 h-28">
+            <div className="flex items-center justify-between gap-2 h-full">
                 <figure className="w-20 h-20">
                     <img className="w-full h-full rounded-lg object-cover" src={imageUrl} alt={title} />
                 </figure>
-                <p className="text-sm font-light">{ title }</p>
+                <div className="flex flex-col justify-between h-full py-4">
+                    <p className="text-sm font-light">{ title }</p>
+                    <p className="text-lg font-medium">${ price }</p>
+                </div>
+                
             </div>
-            <div className="flex items-center gap-2">
-                <p className="text-lg font-medium">{ price }</p>
-                <XMarkIcon 
-                    className="h-6 w-6 cursor-pointer"
+            <div className="flex flex-col justify-between items-center h-full py-4">
+                <div>
+                <TrashIcon 
+                    className="h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-600"
                     onClick={() => handleDelete(id)} />
+                </div>
+                
+                <div>
+                    <select name="" id="" value={quantity} onChange={ (e) => handleChange(id, e.target.value)}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="2">4</option>
+                        <option value="3">5</option>
+                        <option value="2">6</option>
+                        <option value="3">7</option>
+                    </select>
+                </div>
+                
+                    
             </div>
         </div>
     )
