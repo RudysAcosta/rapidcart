@@ -18,16 +18,16 @@ const ProductDetail = () => {
                         className="h-6 w-6 cursor-pointer" />
                 </div>
             </div>
-            <figure>
+            <figure className='px-6'>
                 <img 
-                className='w-full h-full rounded-lg' 
+                className='w-full h-full rounded-lg object-cover' 
                 src={context.productDetail.image} 
                 alt={context.productDetail.title} />
             </figure>
             <p className='flex flex-col p-6'>
-                <span>${context.productDetail.price}</span>
-                <span>{context.productDetail.title}</span>
-                <span>{context.productDetail.description}</span>
+                <span className='font-medium text-2xl mb-2'>${context.productDetail.price}</span>
+                <span className='font-medium text-md'>{context.productDetail.title}</span>
+                <span className='font-light text-sm'>{context.productDetail.description}</span>
             </p>
         </aside>
     )
