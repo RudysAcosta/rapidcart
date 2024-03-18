@@ -5,6 +5,7 @@ import './style.css'
 
 const ProductDetail = () => {
     const context = useContext(ShoppingCartContext)
+    console.log('PRODUCT: ', context.productDetail)
 
     return (
         <aside 
@@ -17,6 +18,17 @@ const ProductDetail = () => {
                         className="h-6 w-6 cursor-pointer" />
                 </div>
             </div>
+            <figure>
+                <img 
+                className='w-full h-full rounded-lg' 
+                src={context.productDetail.image} 
+                alt={context.productDetail.title} />
+            </figure>
+            <p className='flex flex-col p-6'>
+                <span>${context.productDetail.price}</span>
+                <span>{context.productDetail.title}</span>
+                <span>{context.productDetail.description}</span>
+            </p>
         </aside>
     )
 
