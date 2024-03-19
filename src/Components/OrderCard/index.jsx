@@ -18,37 +18,40 @@ const OrderCard = props => {
         renderDeleteIcon =  <TrashIcon className="h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-600" onClick={() => handleDelete(id)} />
     }
 
-    if (handleChange) { 
-        renderChangeIcon =  <div>
-                                <select name="" id="" value={quantity} onChange={ (e) => handleChange(id, e.target.value)}>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="2">4</option>
-                                    <option value="3">5</option>
-                                    <option value="2">6</option>
-                                    <option value="3">7</option>
-                                </select>
-                            </div>    
+    if (handleChange) {         
+        renderChangeIcon =
+            <div className="relative flex items-center max-w-[8rem]">
+                <button className="flex items-center justify-center p-4 h-8 bg-gray-800 hover:bg-gray-700 rounded-s-sm " type="button" id="decrement-button" >
+                    <MinusIcon className="w-4 h-4 text-white stroke-current stroke-2"/>
+                </button>
+                <div 
+                    className="flex w-full h-8 px-2 items-center justify-center bg-gray-800 text-center text-white" type="text" id="quantity-input">
+                 3
+                </div>
+                <button className="flex items-center justify-center p-4 h-8 bg-gray-800 hover:bg-gray-700 rounded-e-sm" type="button" id="increment-button"  >
+                    <PlusIcon className="w-4 h-4 text-white stroke-current stroke-2"  />
+                </button> 
+            </div>
     }
 
     return (
-        <div className="flex justify-between items-center my-2 h-28">
+        <div className="flex my-2 h-32 justify-between items-center ">
             <div className="flex items-center justify-between gap-2 h-full">
-                <figure className="w-20 h-20">
-                    <img className="w-full h-full rounded-lg object-cover" src={imageUrl} alt={title} />
+                <figure className="w-28 h-28">
+                    <img className="w-full h-full rounded-sm object-cover" src={imageUrl} alt={title} />
                 </figure>
-                <div className="flex flex-col justify-between h-full py-4">
-                    <p className="text-sm font-light">{ title }</p>
-                    <p className="text-lg font-medium">${ price }</p>
+                <div className="flex flex-col justify-between h-full py-2">
+                    <div className="flex flex-col gap-1">
+                        <p className="text-sm font-light">{ title }</p>
+                        <p className="text-sm font-light">{ title }</p>
+                    </div>
+                    
+                    {renderChangeIcon}
                 </div>
                 
             </div>
-            <div className="flex flex-col justify-between items-center h-full py-4">
-                <div>
-                {renderDeleteIcon}
-                </div>
-                 {renderChangeIcon}
+            <div className="flex flex-col justify-end items-center h-full py-2">
+                <p className="text-lg font-medium">${ price }</p>
             </div>
         </div>
     )

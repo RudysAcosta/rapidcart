@@ -8,7 +8,7 @@ function Home() {
 
 
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products/')
+        fetch('http://127.0.0.1:8000/products')
             .then(response => response.json())
             .then(data => setItems(data))
     }, [])
