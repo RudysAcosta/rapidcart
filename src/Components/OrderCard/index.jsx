@@ -10,7 +10,27 @@ const OrderCard = props => {
      * @param {string} props.imageUrl - The URL of the image for the order.
      * @param {number} props.quantity - The quantity of the order.
      */
-    const {id, title, price, imageUrl, handleDelete, quantity, handleChange } = props;
+    const {id, title, price, imageUrl, quantity, handleDelete, handleChange } = props;
+
+    let renderDeleteIcon, renderChangeIcon
+    
+    if (handleDelete) {
+        renderDeleteIcon =  <TrashIcon className="h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-600" onClick={() => handleDelete(id)} />
+    }
+
+    if (handleChange) { 
+        renderChangeIcon =  <div>
+                                <select name="" id="" value={quantity} onChange={ (e) => handleChange(id, e.target.value)}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="2">4</option>
+                                    <option value="3">5</option>
+                                    <option value="2">6</option>
+                                    <option value="3">7</option>
+                                </select>
+                            </div>    
+    }
 
     return (
         <div className="flex justify-between items-center my-2 h-28">
@@ -26,24 +46,9 @@ const OrderCard = props => {
             </div>
             <div className="flex flex-col justify-between items-center h-full py-4">
                 <div>
-                <TrashIcon 
-                    className="h-6 w-6 cursor-pointer text-gray-400 hover:text-gray-600"
-                    onClick={() => handleDelete(id)} />
+                {renderDeleteIcon}
                 </div>
-                
-                <div>
-                    <select name="" id="" value={quantity} onChange={ (e) => handleChange(id, e.target.value)}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="2">4</option>
-                        <option value="3">5</option>
-                        <option value="2">6</option>
-                        <option value="3">7</option>
-                    </select>
-                </div>
-                
-                    
+                 {renderChangeIcon}
             </div>
         </div>
     )
