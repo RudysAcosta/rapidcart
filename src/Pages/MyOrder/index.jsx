@@ -7,6 +7,10 @@ import { ShoppingCartContext } from "../../Context"
 
 function MyOrder() {
     const context = useContext(ShoppingCartContext)
+    const currentPath = window.location.pathname
+    let index = currentPath.split('/').slice(-1)[0]
+
+    if (index === 'last') index = context.order?.length - 1
 
     return (
         <Layout>
@@ -20,7 +24,7 @@ function MyOrder() {
 
             <div className='flex flex-col w-80'>
             {
-                context.order?.slice(-1)[0].products.map(product => (
+                context.order?.[index]?.products.map(product => (
                     <OrderCard
                         id={product.id}  
                         key={product.id}

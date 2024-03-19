@@ -7,8 +7,7 @@ import { ShoppingCartContext } from "../../Context"
 function MyOrders() {
     const context = useContext(ShoppingCartContext)
 
-    console.log(context.order)
-
+    
     return (
         <Layout>
             <div className="flex items-center justify-center relative w-80">
@@ -18,7 +17,7 @@ function MyOrders() {
             <div className='flex flex-col w-80'>
                 {
                     context.order?.map((order, index) => (
-                        <Link to={`/my-orders/${order.id}`} key={index}>
+                        <Link to={`/my-orders/${index}`} key={index}>
                             <OrdersCard
                                 key={index}
                                 date={order.date}

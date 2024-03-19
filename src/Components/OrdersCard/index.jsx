@@ -3,7 +3,6 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 const OrdersCard = props => {
     const { totalPrice, totalProducts, date } = props;
     
-    console.log(totalPrice, totalProducts, date )
 
     return (
         <div className="flex justify-between items-center mb-3 border border-black">
