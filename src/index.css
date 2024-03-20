@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    
+    to {
+      transform: translateX(0);
+    }
+}
+
+.checkout-side-menu {
+    animation: slideIn 0.5s forwards;
+}

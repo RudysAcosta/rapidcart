@@ -1,4 +1,6 @@
+import { formatter } from "../../utils";
 import {  TrashIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+
 
 const OrderCard = props => {
     /**
@@ -47,7 +49,6 @@ const OrderCard = props => {
         handleChange(id, value - 1)
     } 
 
-
     return (
         <div className="flex my-1 h-32 justify-between items-center ">
             <div className="flex items-center justify-between gap-2 h-full">
@@ -65,7 +66,7 @@ const OrderCard = props => {
                 
             </div>
             <div className="flex flex-col justify-end items-center h-full py-2">
-                <p className="text-lg font-medium">${ quantity * price }</p>
+                <p className="text-lg font-medium">{ formatter.format(quantity * price) }</p>
             </div>
         </div>
     )

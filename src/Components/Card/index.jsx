@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline"
 import { ShoppingCartContext } from "../../Context"
+import { formatter } from "../../utils"
 
 const Card = (data) => {
     const context = useContext(ShoppingCartContext)
@@ -15,7 +16,7 @@ const Card = (data) => {
       event.stopPropagation()
       context.setCount(context.count + 1)
       context.setCartProducts([...context.cartProducts, {...product, quantity: 1}])
-      context.openCheckoutSideMenu()
+      // context.openCheckoutSideMenu()
       context.closeProductDetail()
     }
 
@@ -52,7 +53,7 @@ const Card = (data) => {
           </figure>
           <p className='flex justify-between'>
             <span className='text-sm font-light'>{data.data.title}</span>
-            <span className='text-lg font-medium'>${data.data.price}</span>
+            <span className='text-lg font-medium'>{ formatter.format(data.data.price) }</span>
           </p>
         </div>
       )

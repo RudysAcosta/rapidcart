@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../OrderCard'
-import { totalPrice } from '../../utils'
+import { totalPrice, formatter } from '../../utils'
 import './style.css'
 
 const CheckoutSideMenu = () => {
@@ -47,7 +47,7 @@ const CheckoutSideMenu = () => {
 
     return (
         <aside 
-            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu  flex flex-col z-10 fixed right-0 border border-gray bg-white`}>
+            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col z-10 fixed right-0 border border-gray bg-white`}>
             <div className="flex justify-between items-center p-6">
                 <div>
                     <ArrowLeftIcon
@@ -78,7 +78,7 @@ const CheckoutSideMenu = () => {
             <div className='px-6 py-6'>
                 <p className='flex justify-between items-center mb-2'>
                     <span className='text-gray-800'>Total:</span>
-                    <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
+                    <span className='font-medium text-2xl'>{formatter.format(totalPrice(context.cartProducts))}</span>
                 </p>
 
                 <Link to='/my-orders/last'>

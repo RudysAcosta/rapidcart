@@ -1,8 +1,18 @@
+import { useContext } from 'react'
+import { ShoppingCartContext } from '../../Context'
+
+
 const Layout = ({children}) => {
+
+    const context = useContext(ShoppingCartContext)
+
     return (
-        <div className="flex flex-col items-center mt-20">
-            { children }
-        </div>
+        <>
+         { (context.isCheckoutSideMenuOpen || context.isProductDetailOpen) &&  <div className="overlay"></div> }
+            <div className="flex flex-col items-center mt-20">
+                { children }
+            </div>
+        </>
     )
 }
 

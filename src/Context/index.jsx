@@ -40,7 +40,7 @@ export const ShoppingCartProvider = ({children}) => {
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
             order,
-            setOrder
+            setOrder,
         }}>
             {children}
         </ShoppingCartContext.Provider>
